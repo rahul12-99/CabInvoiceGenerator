@@ -1,4 +1,5 @@
 import com.cabinvoice.CabInvoiceGenerator;
+import com.cabinvoice.InvoiceSummary;
 import com.cabinvoice.Ride;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,5 +26,17 @@ public class CabInvoiceGeneratorTest {
         Ride[] rides = {new Ride(2,2),new Ride(5,1)};
         double invoice = invoiceGenerator.invoiceGenerators(rides);
         Assertions.assertEquals(73, invoice, 0.0);
+    }
+
+    /**
+     * This method is for test the total no of ride , total fare and average fare per ride
+     */
+    @Test
+    public void givenDistanceAndTime_ForMultipleRide_ShouldReturnSummary() {
+        Ride[] rides = {new Ride(2,2),
+                new Ride(5,1)};
+        InvoiceSummary summary = invoiceGenerator.invoiceGeneratorNew(rides);
+        InvoiceSummary expectedSummary = new InvoiceSummary(2, 73);
+        Assertions.assertEquals(expectedSummary, summary);
     }
 }
