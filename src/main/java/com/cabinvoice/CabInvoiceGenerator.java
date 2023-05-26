@@ -12,4 +12,11 @@ public class CabInvoiceGenerator {
         }
         return totalFare;
     }
+    public double invoiceGenerators(Ride[] rides) {
+        double totalFare=0;
+        for (Ride ride: rides) {
+            totalFare+= this.calculateFare(ride.distance,ride.time);
+        }
+        return totalFare;
+    }
 }
